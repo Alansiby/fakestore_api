@@ -6,7 +6,6 @@ class ReusableLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Lottie.asset("assets/animation/Animation - 1713548585317.json"));
+    return Center(child: Lottie.asset("assets/animation/loading.json"));
   }
 }

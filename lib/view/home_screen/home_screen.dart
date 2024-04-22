@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: homeScreenState.isLoading
           ? Center(child: ReusableLoadingIndicator())
           : ListView.builder(
+              itemCount: homeScreenState.productsList.length,
               itemBuilder: (context, index) => Container(
                     child: ListTile(
                       leading: Image.network(
