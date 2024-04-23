@@ -12,8 +12,9 @@ class HomeScreenController with ChangeNotifier {
   bool isLoading = false;
   Future getProvider() async {
     //show loading when data is loading
-    notifyListeners();
+
     isLoading = true;
+    notifyListeners();
     final url = Uri.parse("https://fakestoreapi.com/products");
     //api should be in a try catch block to handle exception
     try {
@@ -23,7 +24,8 @@ class HomeScreenController with ChangeNotifier {
         //decode
         final decodedRes = jsonDecode(res.body) as List;
         log(decodedRes.toString());
-        List<ProductsListModel> productsList = decodedRes
+        // List<ProductsListModel>
+        productsList = decodedRes
             .map((element) => ProductsListModel.fromJson(element)
                 // (
                 //       id: e["id"],
@@ -46,7 +48,8 @@ class HomeScreenController with ChangeNotifier {
     catch (e) {
       log(e.toString());
     }
-    notifyListeners();
+
     isLoading = false;
+    notifyListeners();
   }
 }
