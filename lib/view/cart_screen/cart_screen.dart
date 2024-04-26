@@ -17,11 +17,14 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+
+      //body
       body: Consumer<CartScreenController>(
         builder: (context, providerObj, child) {
           return Column(
             children: [
               Expanded(
+                //showing the items we use listview.builder
                 child: ListView.builder(
                   itemCount: providerObj.cartList.length,
                   itemBuilder: (context, index) => Container(
@@ -43,6 +46,8 @@ class _CartScreenState extends State<CartScreen> {
                               height: 100,
                               width: 100,
                               decoration: BoxDecoration(
+
+                                  //showing the image
                                   image: DecorationImage(
                                       image: NetworkImage(providerObj
                                               .cartList[index].product.image ??
@@ -56,6 +61,8 @@ class _CartScreenState extends State<CartScreen> {
                                   SizedBox(
                                     width: 105,
                                   ),
+
+                                  //Show title
                                   Text(
                                     providerObj.cartList[index].product.title
                                         .toString(),
@@ -65,6 +72,8 @@ class _CartScreenState extends State<CartScreen> {
                                   SizedBox(
                                     height: 20,
                                   ),
+
+                                  //Show price
                                   Text(providerObj.cartList[index].product.price
                                       .toString())
                                 ],
@@ -75,6 +84,7 @@ class _CartScreenState extends State<CartScreen> {
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                //Delet a product
                                 InkWell(
                                     onTap: () {
                                       providerObj.deletFormCart(index);
@@ -85,16 +95,21 @@ class _CartScreenState extends State<CartScreen> {
                                 ),
                                 Row(
                                   children: [
+                                    //increment a product
                                     InkWell(
                                         onTap: () {
                                           providerObj.onIncrementQty(index);
                                         },
                                         child: Icon(Icons.add)),
+
+                                    //Showing the item count
                                     Center(
                                       child: Text(providerObj
                                           .cartList[index].qty
                                           .toString()),
                                     ),
+
+                                    //Decrement a product
                                     InkWell(
                                         onTap: () {
                                           providerObj.onDecrementQty(index);
@@ -111,6 +126,8 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
               ),
+
+              //Showing the total price
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: InkWell(

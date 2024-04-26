@@ -11,6 +11,7 @@ class CartScreenController with ChangeNotifier {
   //at first the amount is zero
   double totalAmount = 0;
 
+//add to cart function
   addToCart(ProductsListModel product, BuildContext context) {
     final isCarted =
         cartList.any((element) => element.product.id == product.id);
@@ -25,18 +26,21 @@ class CartScreenController with ChangeNotifier {
     notifyListeners();
   }
 
+//function to Delete an item from cart
   deletFormCart(int index) {
     cartList.removeAt(index);
     calculateTM();
     notifyListeners();
   }
 
+//function to increment an item in the cart
   onIncrementQty(int index) {
     cartList[index].qty = cartList[index].qty + 1;
     calculateTM();
     notifyListeners();
   }
 
+//function to decrement an item in the cart
   onDecrementQty(int index) {
     if (cartList[index].qty > 1) {
       cartList[index].qty = cartList[index].qty - 1;

@@ -8,25 +8,30 @@ import 'package:http/http.dart' as http;
 class HomeScreenController with ChangeNotifier {
   //initial state
   List<ProductsListModel> productsList = [];
+
   //loading
   bool isLoading = false;
   Future getProvider() async {
     //show loading when data is loading
-
     isLoading = true;
     notifyListeners();
     final url = Uri.parse("https://fakestoreapi.com/products");
+
     //api should be in a try catch block to handle exception
     try {
       final res = await http.get(url);
 
+//Chicking the statuscode
       if (res.statusCode == 200) {
         //decode
         final decodedRes = jsonDecode(res.body) as List;
         log(decodedRes.toString());
-        // List<ProductsListModel>
+
+        //Decoding the Product List Model
         productsList = decodedRes
             .map((element) => ProductsListModel.fromJson(element)
+
+                //manual
                 // (
                 //       id: e["id"],
                 //       title: e["title"],
@@ -40,10 +45,12 @@ class HomeScreenController with ChangeNotifier {
 
         log(productsList.first.title.toString());
       } else {
+        //Statuscode fail
         log("fail");
       }
       //end of try block
     }
+
     //catch block
     catch (e) {
       log(e.toString());
