@@ -15,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //function for api call
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -29,25 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final homeScreenState = context.watch<HomeScreenController>();
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Provider.of<HomeScreenController>(context, listen: false)
-      //         .getProvider();
-      //   },
-      // ),
-      appBar: AppBar(
-          // actions: [
-          //   IconButton(
-          //       onPressed: () {
-          //         Navigator.push(
-          //             context,
-          //             MaterialPageRoute(
-          //               builder: (context) => CartScreen(),
-          //             ));
-          //       },
-          //       icon: Icon(Icons.shopping_cart))
-          // ],
-          ),
+      appBar: AppBar(),
 
       // drawder
       drawer: Drawer(
